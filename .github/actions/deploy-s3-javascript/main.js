@@ -13,6 +13,9 @@ const run = () => {
   // note: AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY environment variables are needed to use AWS cli command below
   // exec.exec(`aws s3 sync ${distFolder} ${s3Uri} --region ${bucketRegion}`);
   core.notice(`use "aws s3 sync ${distFolder} ${s3Uri} --region ${bucketRegion}" to upload files on AWS S3 bucket`);
+
+  const websiteUrl = `http://${bucket}.s3-website-${bucketRegion}.amazonaws.com`;
+  core.setOutput("website-url", websiteUrl);
 };
 
 run();
